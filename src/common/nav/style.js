@@ -4,7 +4,9 @@ export const Nav = styled.div`
   display: flex;
   position: fixed;
   bottom: 0;
-  height: 3rem;
+  left: 0;
+  right: 0;
+  height: 50px;
   background: #fff;
   border-top: 1px solid #ddd;
   padding-top: 5px;
