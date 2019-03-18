@@ -8,7 +8,7 @@ export default class Title extends Component {
           <i className="iconfont">&#xe606;</i>
         </TitleLeft>
         <TitleRight>121</TitleRight>
-        <TitleMiddle>主页</TitleMiddle>
+        <TitleMiddle>{this.props.children}</TitleMiddle>
       </TitleBar>
     );
   }

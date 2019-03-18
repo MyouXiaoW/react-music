@@ -150,8 +150,10 @@ optgroup,
 select,
 textarea {
     margin: 0;
-    font: inherit;
-    color: inherit;
+    /* font: inherit;
+    color: inherit; */
+    outline:none;
+    border:none;
 }
 /* 去除怪异和模型 */
 /* * {
