@@ -3,11 +3,28 @@ import {Link} from 'react-router-dom';
 import Container from '../../common/container';
 import Page from 'Common/page';
 import Title from 'Common/title';
-import {SearchInput, Navigation, NavigationItem, CarouselItem, Selection, Select} from './style';
+import {
+  SearchInput,
+  Navigation,
+  NavigationItem,
+  CarouselItem,
+  Selection,
+  Select,
+  Time,
+  Grid,
+  GridTitle,
+  GridItem,
+  GridContent
+} from './style';
 import {Carousel} from 'antd-mobile';
-
+import API from 'Servers/api';
 import moment from 'moment';
 class Find extends Component {
+  componentDidMount() {
+    API.getBanner().then(res => {
+      console.error(res);
+    });
+  }
   render() {
     console.error();
     const dotStyle = {
@@ -63,10 +80,13 @@ class Find extends Component {
             </Link>
             <Link to="/">
               <Select>
-                <i className="iconfont">
+                <i className="iconfont" date={moment().date()}>
                   &#xe600;
-                  <em>{moment().date()}</em>
                 </i>
+
+                <Time>
+                  <em>{moment().date()}</em>
+                </Time>
               </Select>
             </Link>
             <Link to="/">
@@ -80,6 +100,38 @@ class Find extends Component {
               </Select>
             </Link>
           </Selection>
+
+          <Grid>
+            <GridTitle>推荐</GridTitle>
+            <GridContent>
+              <GridItem>
+                <img src="http://p1.music.126.net/esVUFv1Nnybsq7GA_YoW2g==/109951163935416974.jpg" alt="" />
+                <p>121212</p>
+              </GridItem>
+              <GridItem>
+                <img src="http://p1.music.126.net/esVUFv1Nnybsq7GA_YoW2g==/109951163935416974.jpg" alt="" />
+                <p>121212</p>
+              </GridItem>
+              <GridItem>
+                <img src="http://p1.music.126.net/esVUFv1Nnybsq7GA_YoW2g==/109951163935416974.jpg" alt="" />
+                <p>121212</p>
+              </GridItem>
+            </GridContent>
+            <GridContent>
+              <GridItem>
+                <img src="http://p1.music.126.net/esVUFv1Nnybsq7GA_YoW2g==/109951163935416974.jpg" alt="" />
+                <p>121212</p>
+              </GridItem>
+              <GridItem>
+                <img src="http://p1.music.126.net/esVUFv1Nnybsq7GA_YoW2g==/109951163935416974.jpg" alt="" />
+                <p>121212</p>
+              </GridItem>
+              <GridItem>
+                <img src="http://p1.music.126.net/esVUFv1Nnybsq7GA_YoW2g==/109951163935416974.jpg" alt="" />
+                <p>121212</p>
+              </GridItem>
+            </GridContent>
+          </Grid>
         </Page>
       </Fragment>
     );

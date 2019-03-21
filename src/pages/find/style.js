@@ -37,6 +37,7 @@ export const CarouselItem = styled.div`
 export const Selection = styled.div`
   display: flex;
   justify-content: space-evenly;
+  padding: 1rem 0;
   /* flex-direction: column; */
 `;
 
@@ -48,10 +49,43 @@ export const Select = styled.div`
   text-align: center;
   line-height: 3rem;
   color: #fff;
+  position: relative;
   i {
     font-size: 1.7rem;
-    ::after {
-      content: ${props => 11};
-    }
+  }
+`;
+export const Time = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  em {
+    display: block;
+    padding-top: 5px;
+    font-size: 0.4rem;
+  }
+`;
+
+export const Grid = styled.div``;
+
+export const GridTitle = styled.div`
+  font-size: 16px;
+`;
+
+export const GridContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: 5px;
+`;
+
+export const GridItem = styled.div`
+  flex: 1;
+  margin-right: 5px;
+  margin-top: 5px;
+  text-align: center;
+  height: 100%;
+  p {
+    font-size: 12px;
   }
 `;
