@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import Container from '../../common/container';
 import Page from 'Common/page';
 import Title from 'Common/title';
 import {
@@ -17,16 +17,15 @@ import {
   GridContent
 } from './style';
 import {Carousel} from 'antd-mobile';
-import API from 'Servers/api';
 import moment from 'moment';
 class Find extends Component {
   componentDidMount() {
-    API.getBanner().then(res => {
-      console.error(res);
-    });
+    const {getbanner, banner} = this.props;
+    getbanner(banner);
   }
   render() {
-    console.error();
+    const {banner} = this.props;
+    console.log(this.props);
     const dotStyle = {
       width: 5,
       height: 5,
@@ -47,30 +46,22 @@ class Find extends Component {
             autoplay //自动切换
             infinite //是否循环播放
             dots
+            frameOverflow="none"
             dotStyle={dotStyle}
             dotActiveStyle={dotActiveStyle}
             style={{
               position: 'absolute',
-              top: 75
-              // height: 0
+              top: 75,
+              height: '9rem',
+              overflow: 'hidden'
             }}
           >
-            <CarouselItem>
-              <img src="http://p1.music.126.net/esVUFv1Nnybsq7GA_YoW2g==/109951163935416974.jpg" alt="" />
-            </CarouselItem>
-            <CarouselItem>
-              <img src="http://p1.music.126.net/B_xdKU0T6kctXce9FeS3Cw==/109951163935385847.jpg" alt="" />
-            </CarouselItem>
-            <CarouselItem>
-              <img src="http://p1.music.126.net/velihUqMviN4-mYPc2ochA==/109951163935384461.jpg" alt="" />
-            </CarouselItem>
-            <CarouselItem>
-              {' '}
-              <img src="http://p1.music.126.net/lgssnTR2wiTrpvYeHjz0Dg==/109951163935389652.jpg" alt="" />
-            </CarouselItem>
-            <CarouselItem>
-              <img src="http://p1.music.126.net/lWJTUFnajqsOHR0pVKdvtg==/109951163934344738.jpg" alt="" />
-            </CarouselItem>
+            {banner &&
+              banner.map(e => (
+                <CarouselItem key={e}>
+                  <img width="22.5rem" height="9rem" src={e.imageUrl} alt="" />
+                </CarouselItem>
+              ))}
           </Carousel>
           <Selection>
             <Link to="/">
@@ -83,7 +74,6 @@ class Find extends Component {
                 <i className="iconfont" date={moment().date()}>
                   &#xe600;
                 </i>
-
                 <Time>
                   <em>{moment().date()}</em>
                 </Time>
@@ -138,4 +128,15 @@ class Find extends Component {
   }
 }
 
-export default Container(Find);
+export default connect(
+  state => ({banner: state.banner.banners}),
+  (dispatch, ownProps) => {
+    return {
+      getbanner: banner => {
+        if (!banner) {
+          dispatch({type: 'request'});
+        }
+      }
+    };
+  }
+)(Find);

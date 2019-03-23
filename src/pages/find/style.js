@@ -27,6 +27,7 @@ export const CarouselItem = styled.div`
   display: flex;
   justify-content: center;
   overflow: hidden;
+  height: 9rem;
   img {
     width: 22.5rem;
     height: 9rem;

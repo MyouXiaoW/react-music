@@ -1,6 +1,6 @@
 import React from 'react';
 import {Nav, NavItem} from './style';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 const NAV_SET = [
   {id: 1, icon: <i className="iconfont">&#xe6e0;</i>, text: '发现', route: '/find'},
   {id: 2, icon: <i className="iconfont">&#xe609;</i>, text: '视频', route: '/video'},
@@ -9,7 +9,7 @@ const NAV_SET = [
   {id: 5, icon: <i className="iconfont">&#xe60b;</i>, text: '账号', route: '/acount'}
 ];
 
-export default props => {
+export default withRouter(props => {
   return (
     <Nav>
       {NAV_SET.map(e => (
@@ -22,4 +22,4 @@ export default props => {
       ))}
     </Nav>
   );
-};
+});
